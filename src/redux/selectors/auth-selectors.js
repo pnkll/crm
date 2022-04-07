@@ -1,3 +1,3 @@
 export const getName = (state) => {
-    return state.auth[0].name
+    return state.auth.name
 }

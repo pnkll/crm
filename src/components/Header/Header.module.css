@@ -1,0 +1,26 @@
+.siteLayoutSubHeaderBackground {
+    background: rgb(61, 61, 61);
+  }
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+  }
+
+  .signIn{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: rgb(252, 252, 252);
+  }
+  .signUp{
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: rgb(252, 252, 252);
+  }
+
+  .active{
+    background-color: rgba(0, 0, 0, 0.3);
+
+  }

@@ -1,33 +1,39 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { setAuth } from './redux/reducers/auth-reducer';
-import { getName } from './redux/selectors/auth-selectors';
+import './App.css'
+
+import { Layout } from 'antd';
+
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import Login from './components/Login/Login';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import SignUp from './components/SignUp/SignUp';
+
 
 function App() {
 
+  const { Content } = Layout;
 
-  const dispatch = useDispatch()
-
-  const name = useSelector( getName)
-
-  const data = {
-    isAuth: true,
-    userId: Date.now(),
-    name: 'Painkill',
-    group: 'admin'
-  }
-
-
-  const onSend = async () => {
-    dispatch(setAuth(data))
-  }
-
-
-  return (
-    <>
-      <button onClick={onSend}>Запрос</button>
-      {name !=null && <div>Привет {name}</div>}
-    </>
+  return (<div>
+    <BrowserRouter>
+    <Layout>
+      <Sidebar />
+      <Layout>
+        <Header />
+        <Content style={{ margin: '24px 16px 0' }}>          
+            <Routes>
+              <Route path='signin' element={<Login />} />
+              <Route path='signup' element={<SignUp />} />
+            </Routes>          
+        </Content>
+        <Footer />
+      </Layout>
+    </Layout>
+    </BrowserRouter>
+  </div>
   );
 }
+
 
 export default App;

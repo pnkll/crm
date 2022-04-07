@@ -1,0 +1,16 @@
+/* #components-layout-demo-responsive .logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.2);
+  } */
+@import '~antd/dist/antd.css';
+
+.content {
+    margin: 24px 16px 0;
+}
+  
+  .siteLayout {
+    background: rgb(151, 40, 40);
+    padding: 24; 
+    height: 360px;
+  }
