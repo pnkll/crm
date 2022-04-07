@@ -21,7 +21,7 @@ const Sidebar = (props) => {
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
           <Menu.Item key="1" icon={<UserOutlined />}>
-          <Link to='login'>nav 1</Link>
+          <Link to='profile'>Личный кабинет</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<VideoCameraOutlined />}>
             nav 2

@@ -7,6 +7,23 @@
     justify-content: end;
   }
 
+  .user{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    color: white;
+  }
+
+  .user img {
+    width: 100%;
+    max-width: 64px;
+    height: 64px;
+  }
+  
+  .info{
+    padding-right: 20px;
+  }
+
   .signIn{
     padding-left: 10px;
     padding-right: 10px;

@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp';
+import Person from './components/Person/Person';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route path='signin' element={<Login />} />
               <Route path='signup' element={<SignUp />} />
+              <Route path='profile' element={<Person/>} />
             </Routes>          
         </Content>
         <Footer />

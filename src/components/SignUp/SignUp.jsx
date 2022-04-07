@@ -1,25 +1,35 @@
-import React from "react"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import s from './SignUp.module.css'
 
 const SignUp = () => {
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm({mode: 'onBlur'})
+
+    const [ message, setMessage ] = useState(null)
 
     const onSubmit = (data) => {
-        console.log(data)
+        if (data.password != data.reqPassword){
+            setMessage('Пароли не совпадают')
+        }
+        else { reset() }
     }
 
     return <div className={s.mainWrapper}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} onClick={()=> setMessage(null)}>
+            Ваше имя<br/>
             <input type='text' {...register('firstName')} /><br />
+            Фамилия<br/>
             <input type='text' {...register('lastName')} /><br />
+            Придумайте пароль<br/>
             <input type='password' {...register('password')} /><br />
+            Подтвердите пароль<br/>
             <input type='password' {...register('reqPassword')} /><br />
+            {message !=null && <div className={s.error}>{message} <br/></div>}
+            Введите адрес электронной почты<br/>
             <input type='email' {...register('email')} /><br />
-            <input type='submit' value='Зарегистрироваться'/>
+            <br/><input type='submit' value='Зарегистрироваться'/>
         </form>
-
     </div>
 }
 

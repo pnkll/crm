@@ -1,0 +1,16 @@
+.profile{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile img{
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
