@@ -1,4 +1,4 @@
-import axios from 'axios'
+import * as axios from 'axios'
 
 const instance = axios.create(
     {
@@ -6,6 +6,10 @@ const instance = axios.create(
     }
 )
 
-const login = () => {
-    
+export const login = (data) => {
+    return instance.post('login', data)   
+}
+
+export const getUsers = () => {
+    return instance.get('/users')
 }

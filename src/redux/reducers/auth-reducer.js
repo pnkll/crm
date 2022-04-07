@@ -3,12 +3,14 @@ import { createReducer } from "@reduxjs/toolkit"
 
 
 export const setAuth = createAction('SET_AUTH')
+export const setError = createAction('SET_ERROR')
 
 const initialState = {
     isAuth: false,
     userId: null,
     name: null,
-    group: null
+    group: null,
+    errors: null
   }
 
 const authReducer = createReducer(initialState, (builder) => {
@@ -19,6 +21,11 @@ const authReducer = createReducer(initialState, (builder) => {
       state.name = action.payload.name
       state.group = action.payload.group
     })
+    .addCase('SET_ERROR', (state = initialState, action) =>{
+      state.errors = action.payload
+    })
+
+
 })
 
 
