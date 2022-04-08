@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Login from './components/Login/Login';
+import Transit from './Transit';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp';
@@ -38,8 +39,8 @@ function App() {
               <Route path='signin' element={<Login />} />
               <Route path='signup' element={<SignUp />} />
               <Route path='profile' element={<Person/>} />
+              <Route path='test' element={<Transit/>} />
             </Routes>      
-            <button onClick={onSend}>Запрос</button>    
         </Content>
         <Footer />
       </Layout>
