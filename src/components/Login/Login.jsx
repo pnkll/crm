@@ -25,7 +25,7 @@ const Login = () => {
             : <div className={s.mainWrapper}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     Электронная почта<br />
-                    <input type='text' {...register('login')} /><br />
+                    <input type='email' {...register('email')} /><br />
                     Пароль<br />
                     <input type='password' {...register('password')} /><br />
                     <input type='checkbox' {...register('rememberMe')} />Запомнить меня<br />

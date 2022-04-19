@@ -1,8 +1,12 @@
 import React, { useState } from "react"
+import { useDispatch } from 'react-redux'
 import { useForm } from "react-hook-form"
+import { regThunk } from "../../redux/thunks/authThunk"
 import s from './SignUp.module.css'
 
 const SignUp = () => {
+
+const dispatch = useDispatch()
 
     const { register, handleSubmit, reset } = useForm({mode: 'onBlur'})
 
@@ -12,7 +16,11 @@ const SignUp = () => {
         if (data.password != data.reqPassword){
             setMessage('Пароли не совпадают')
         }
-        else { reset() }
+        else { 
+            console.log(data)
+            dispatch(regThunk(data))
+            // reset() 
+        }
     }
 
     return <div className={s.mainWrapper}>

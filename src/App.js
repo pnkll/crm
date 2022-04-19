@@ -6,13 +6,14 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Sidebar from './components/Sidebar/Sidebar';
 import Login from './components/Login/Login';
-import Transit from './Transit';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp';
 import Person from './components/Person/Person';
-import { login } from './axios/api';
-
+import { useDebugValue, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getInitialApp } from './redux/selectors/app-selectors';
+import { initializedApp } from './redux/thunks/appThunk';
 
 function App() {
 
@@ -23,28 +24,40 @@ function App() {
     password: 'root'
   }
 
+  const dispatch = useDispatch()
 
-  const onSend = () => {
-    login(data).then(response => console.log(response))
+  const appInitialized = useSelector(getInitialApp)
+
+  useEffect(() => {
+    dispatch(initializedApp())
+  }, [])
+
+  useEffect(()=>{
+    console.log('hello')
+  },[localStorage])
+
+  {
+    !appInitialized &&
+    <div>Continue...</div>
   }
 
   return (<div>
     <BrowserRouter>
-    <Layout>
-      <Sidebar />
       <Layout>
-        <Header />
-        <Content style={{ margin: '24px 16px 0' }}>          
+        <Sidebar />
+        <Layout>
+          <Header />
+          <Content style={{ margin: '24px 16px 0' }}>
             <Routes>
               <Route path='signin' element={<Login />} />
               <Route path='signup' element={<SignUp />} />
-              <Route path='profile' element={<Person/>} />
-              <Route path='test' element={<Transit/>} />
-            </Routes>      
-        </Content>
-        <Footer />
+              <Route path='profile' element={<Person />} />
+
+            </Routes>
+          </Content>
+          <Footer />
+        </Layout>
       </Layout>
-    </Layout>
     </BrowserRouter>
   </div>
   );
