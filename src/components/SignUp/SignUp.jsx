@@ -1,8 +1,12 @@
 import React, { useState } from "react"
+import { useDispatch } from 'react-redux'
 import { useForm } from "react-hook-form"
+import { regThunk } from "../../redux/thunks/authThunk"
 import s from './SignUp.module.css'
 
 const SignUp = () => {
+
+const dispatch = useDispatch()
 
     const { register, handleSubmit, reset } = useForm({mode: 'onBlur'})
 
@@ -14,7 +18,13 @@ const SignUp = () => {
         }
         else { 
             console.log(data)
+<<<<<<< HEAD
             reset() }
+=======
+            dispatch(regThunk(data))
+            // reset() 
+        }
+>>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
     }
 
     return <div className={s.mainWrapper}>
