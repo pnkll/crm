@@ -11,22 +11,11 @@ import Transit from './Transit';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp';
 import Person from './components/Person/Person';
-import { login } from './axios/api';
 
 
 function App() {
 
   const { Content } = Layout;
-
-  const data = {
-    login: 'root',
-    password: 'root'
-  }
-
-
-  const onSend = () => {
-    login(data).then(response => console.log(response))
-  }
 
   return (<div>
     <BrowserRouter>
@@ -40,7 +29,7 @@ function App() {
               <Route path='signup' element={<SignUp />} />
               <Route path='profile' element={<Person/>} />
               <Route path='test' element={<Transit/>} />
-            </Routes>      
+            </Routes> 
         </Content>
         <Footer />
       </Layout>

@@ -13,3 +13,13 @@ export const getLogin = (state) => {
 export const getError = (state) => {
     return state.auth.errors
 }
+
+
+//временно
+export const getFirstname = (state) => {
+    return state.auth.info.firstname
+}
+
+export const getLastname = (state) => {
+    return state.auth.info.lastname
+}

@@ -15,10 +15,10 @@ const Sidebar = (props) => {
       collapsedWidth="0"
       theme='dark'
       onBreakpoint={broken => {
-        console.log(broken);
+        // console.log(broken);
       }}
       onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
+        // console.log(collapsed, type);
       }}
     >
       <div className="logo" />

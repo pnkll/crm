@@ -12,7 +12,9 @@ const SignUp = () => {
         if (data.password != data.reqPassword){
             setMessage('Пароли не совпадают')
         }
-        else { reset() }
+        else { 
+            console.log(data)
+            reset() }
     }
 
     return <div className={s.mainWrapper}>
