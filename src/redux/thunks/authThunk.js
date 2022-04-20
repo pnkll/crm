@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-import { auth, getUsers, login } from "../../axios/api"
-=======
-import { registration, getAuth } from '../../axios/api'
+import { registration, getAuth, logout } from '../../axios/api'
 import { login } from "../../axios/api"
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
 import { setAuth, setError } from "../reducers/auth-reducer"
-// import { getAuth } from '../selectors/auth-selectors'
+
+
 
 
 export const regThunk = (data) => async (dispatch) => {
@@ -15,33 +12,8 @@ export const regThunk = (data) => async (dispatch) => {
 
 export const loginThunk = (data) => async (dispatch) => {
     const response = await login(data)
-<<<<<<< HEAD
     localStorage.setItem('jwt', response.data.token)
-    const rep = await auth()
-    console.log(rep)
-    // if (response.data.resultCode === 0){
-    //     const user = response.data.user
-    //     const state = {
-    //         isAuth: true,
-    //         userId: user._id,
-    //         name: user.login,
-    //         group: user.group,
-    //         info: {
-    //             firstname: user.info.firstname,
-    //             lastname: user.info.lastname,
-    //             company: user.info.company,
-    //             position: user.info.position
-    //           }              
-    //     }
-    //     localStorage.setItem('jwt', response.data.jwt)
-    //     localStorage.setItem('id', response.data.user._id)
-        // dispatch(setAuth(state))
-    // } else if (response.data.resultCode === 1){
-    //     dispatch(setError(response.data.message))
-    // }
-=======
-    await localStorage.setItem('jwt', response.data.token)
-    if (response.status === 200) {
+    if (response.status === 200 && localStorage.jwt) {
         dispatch(checkAuth())
     }
     else (
@@ -50,8 +22,8 @@ export const loginThunk = (data) => async (dispatch) => {
 }
 
 export const checkAuth = () => async (dispatch) => {
-    const response = await getAuth()
-    console.log(response)
+    const token = localStorage.getItem('jwt')
+    const response = await getAuth(token)
     const info = {
         userId: response.data._id,
         email: response.data.email,
@@ -59,6 +31,21 @@ export const checkAuth = () => async (dispatch) => {
         lastname: response.data.lastName,
         role: response.data.roles,
     }
-    dispatch(setAuth(info))
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
+    dispatch(setAuth({ auth: true, info: info }))
+}
+
+export const logoutThunk = () => async (dispatch) => {
+    const token = localStorage.getItem('jwt')
+    const response = await logout(token)
+
+    if(response.data.resultCode === 0){
+    const info = {
+        userId: null,
+        email: null,
+        firstname: null,
+        lastname: null,
+        role: null,
+    }
+    localStorage.setItem('jwt', null)
+    dispatch(setAuth({ auth: false, info: info }))}
 }

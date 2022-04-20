@@ -18,13 +18,9 @@ const dispatch = useDispatch()
         }
         else { 
             console.log(data)
-<<<<<<< HEAD
-            reset() }
-=======
             dispatch(regThunk(data))
             // reset() 
         }
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
     }
 
     return <div className={s.mainWrapper}>

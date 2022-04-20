@@ -13,6 +13,9 @@ export const getLogin = (state) => {
 export const getError = (state) => {
     return state.auth.errors
 }
+export const getUserId = (state) => {
+    return state.auth.info.userId
+}
 
 
 //временно

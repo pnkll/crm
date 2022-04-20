@@ -10,27 +10,20 @@ import Login from './components/Login/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp';
 import Person from './components/Person/Person';
-<<<<<<< HEAD
-
-=======
-import { useDebugValue, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInitialApp } from './redux/selectors/app-selectors';
 import { initializedApp } from './redux/thunks/appThunk';
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
+import { getAuth } from './redux/selectors/auth-selectors';
+// import { useCookies } from 'react-cookie'
 
 function App() {
 
   const { Content } = Layout;
 
-<<<<<<< HEAD
-=======
-  const data = {
-    login: 'root',
-    password: 'root'
-  }
-
   const dispatch = useDispatch()
+
+  const isAuth = useSelector(getAuth)
 
   const appInitialized = useSelector(getInitialApp)
 
@@ -38,16 +31,15 @@ function App() {
     dispatch(initializedApp())
   }, [])
 
-  useEffect(()=>{
-    console.log('hello')
-  },[localStorage])
+  // useEffect(() =>{
+  //   console.log('hello')
+  // },[isAuth])
 
   {
     !appInitialized &&
     <div>Continue...</div>
   }
 
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
   return (<div>
     <BrowserRouter>
       <Layout>
@@ -58,20 +50,12 @@ function App() {
             <Routes>
               <Route path='signin' element={<Login />} />
               <Route path='signup' element={<SignUp />} />
-<<<<<<< HEAD
-              <Route path='profile' element={<Person/>} />
-              <Route path='test' element={<Transit/>} />
-            </Routes> 
-        </Content>
-        <Footer />
-=======
               <Route path='profile' element={<Person />} />
 
             </Routes>
           </Content>
           <Footer />
         </Layout>
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
       </Layout>
     </BrowserRouter>
   </div>

@@ -1,6 +1,6 @@
 import * as axios from 'axios'
 
-const token = localStorage.getItem('jwt')
+// const token = localStorage.getItem('jwt')
 // const token = 
 
 // const instance = axios.create(
@@ -12,45 +12,48 @@ const token = localStorage.getItem('jwt')
 //     }
 // )
 
-const header =  `Authorization: Bearer ${token}`
+// const authorization = () =>{
+//     if (localStorage.jwt != null){
+//         return `Bearer ${localStorage.jwt}`
+//     }
+// }
 
 const instance = axios.create(
     {
         baseURL: 'http://localhost:3012',
         // withCredentials: true
-        headers: {
-            'Authorization': `Bearer ${localStorage.jwt}`
-        }
+        // headers: {
+        //     'Authorization': `Bearer ${token}`
+        //     // 'Authorization': authorization
+                
+                    
+                
+        // }
+
     }
 )
 
-<<<<<<< HEAD
-=======
 export const registration = (data) => {
     return instance.post('auth/registration', data)
 }
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
 
 export const login = (data) => {
-    return instance.post('auth/login', data)   
+    return instance.post('auth/login', data)
 }
 
-<<<<<<< HEAD
-export const auth = (data) =>{
-    return instance.get(`auth/me`, {headers: { Authorization: `Bearer ${token}`}})
-=======
-export const getAuth = (  ) => {
-    return instance.get('auth/me',  )
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
+export const getAuth = (token) => {
+    return instance.get('auth/me', {headers: {'Authorization': `Bearer ${token}`}})
 }
 
 export const getUsers = () => {
     return instance.get('auth/users')
-<<<<<<< HEAD
-}
-=======
 }
 
+export const logout = (token) => {
+    return instance.post('auth/logout', {}, {headers: {'Authorization': `Bearer ${token}`}})
+}
 
 
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
+
+
+

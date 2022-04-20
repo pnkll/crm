@@ -1,14 +1,12 @@
 import { Layout } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import s from './Header.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-<<<<<<< HEAD
-import { getAuth, getFirstname, getInfo, getLastname, getLogin } from '../../redux/selectors/auth-selectors';
-=======
-import { getAuth, getLogin } from '../../redux/selectors/auth-selectors';
+import { getAuth, getLogin, getUserId } from '../../redux/selectors/auth-selectors';
 import { Button } from 'antd';
-import { setAuth, logout } from '../../redux/reducers/auth-reducer';
->>>>>>> 8652f4f89c996f1423a0e74f6f4bfd576bea5eaa
+import { logout } from '../../redux/reducers/auth-reducer';
+import { getFirstname, getLastname } from '../../redux/selectors/auth-selectors';
+import { logoutThunk } from '../../redux/thunks/authThunk';
 
 const Header = (props) => {
 
@@ -16,13 +14,16 @@ const Header = (props) => {
 
   const dispatch = useDispatch()
 
+  const navigate = useNavigate()
+
   const setActive = ({isActive}) => isActive ? s.active : s.notActive
 
   const isAuth = useSelector(getAuth)
+  const userId = useSelector(getUserId)
 
   const onLogout = () => {
-    localStorage.setItem('jwt', null)
-    dispatch(logout())
+    dispatch(logoutThunk())
+    navigate('login')
   }
 
   const avatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq_I0JFO2DxoAV3J-sI7ajtx0qW0Q5neaY_A&usqp=CAU'
