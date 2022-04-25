@@ -16,7 +16,7 @@ const Header = (props) => {
 
   const navigate = useNavigate()
 
-  const setActive = ({isActive}) => isActive ? s.active : s.notActive
+  const setActive = ({ isActive }) => isActive ? s.active : s.notActive
 
   const isAuth = useSelector(getAuth)
   const userId = useSelector(getUserId)
@@ -33,15 +33,15 @@ const Header = (props) => {
   return <>
     <Header className={s.siteLayoutSubHeaderBackground}>
       {!isAuth ? <div className={s.buttons}>
-      <NavLink to='signin' className={setActive}><div className={s.signIn}>Войти</div></NavLink>
-      <NavLink to='signup' className={setActive}><div className={s.signUp}>Зарегиcтрироваться</div></NavLink>
+        <NavLink to='signin' className={setActive}><div className={s.signIn}>Войти</div></NavLink>
+        <NavLink to='signup' className={setActive}><div className={s.signUp}>Зарегиcтрироваться</div></NavLink>
       </div>
-      : <div className={s.user}>
-               <div className={s.info}>
-                 {firstName!==null && lastName!==null ? <div>{firstName}<br/>{lastName}</div> : <></>}
-               </div>
-               <img src={avatar}/>
-               <Button onClick={onLogout}>Выйти</Button>
+        : <div className={s.user}>
+          <div className={s.info}>
+            {firstName !== null && lastName !== null ? <>{firstName} {lastName}</> : <></>}
+          </div>
+          <img src={avatar} />
+          <div className={s.logoutBut}><Button onClick={onLogout}>Выйти</Button></div>
         </div>}
     </Header>
   </>
