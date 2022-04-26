@@ -17,6 +17,10 @@ export const getUserId = (state) => {
     return state.auth.info.userId
 }
 
+export const getRoles = (state) => {
+    return state.auth.info.role
+}
+
 
 //временно
 export const getFirstname = (state) => {

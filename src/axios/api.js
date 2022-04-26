@@ -33,6 +33,8 @@ const instance = axios.create(
     }
 )
 
+//auth
+
 export const registration = (data) => {
     return instance.post('auth/registration', data)
 }
@@ -45,14 +47,26 @@ export const getAuth = (token) => {
     return instance.get('auth/me', {headers: {'Authorization': `Bearer ${token}`}})
 }
 
-export const getUsers = () => {
-    return instance.get('auth/users')
-}
-
 export const logout = (token) => {
     return instance.post('auth/logout', {}, {headers: {'Authorization': `Bearer ${token}`}})
 }
 
+
+//users
+
+export const usersList = () => {
+    return instance.get('users/list')
+}
+
+//tasks
+
+export const tasks = (userId) =>{
+    return instance.post('tasks/me', {id: userId})
+}
+
+export const getTask = (taskId) =>{
+    return instance.post('tasks/task', {taskId: taskId})
+}
 
 
 

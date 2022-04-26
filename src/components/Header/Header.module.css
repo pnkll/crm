@@ -37,7 +37,25 @@
     color: rgb(252, 252, 252);
   }
 
-  .active{
-    background-color: rgba(0, 0, 0, 0.3);
+  .signIn:hover{
+    background-color: rgba(179, 130, 130, 0.3);
+  }
 
+  .signUp:hover{
+    background-color: rgba(179, 130, 130, 0.3);
+  }
+
+  .active{
+    background-color: rgba(179, 130, 130, 0.3);
+
+  }
+
+  .fullname{
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+  }
+
+  .logoutBut{
+    padding-left: 20px;
   }

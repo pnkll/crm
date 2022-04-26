@@ -14,7 +14,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInitialApp } from './redux/selectors/app-selectors';
 import { initializedApp } from './redux/thunks/appThunk';
-import { getAuth } from './redux/selectors/auth-selectors';
+import { getAuth, getUserId } from './redux/selectors/auth-selectors';
+import Users from './components/Users/Users';
+import TaskForm from './components/Tasks/TaskForm/TaskForm';
+import Tasks from './components/Tasks/Tasks';
+import Task from './components/Tasks/Task/Task';
+import { getTasks } from './redux/thunks/tasksThunk';
 // import { useCookies } from 'react-cookie'
 
 function App() {
@@ -24,6 +29,7 @@ function App() {
   const dispatch = useDispatch()
 
   const isAuth = useSelector(getAuth)
+  const userId = useSelector(getUserId)
 
   const appInitialized = useSelector(getInitialApp)
 
@@ -31,13 +37,9 @@ function App() {
     dispatch(initializedApp())
   }, [])
 
-  // useEffect(() =>{
-  //   console.log('hello')
-  // },[isAuth])
-
   {
     !appInitialized &&
-    <div>Continue...</div>
+      <div>Continue...</div>
   }
 
   return (<div>
@@ -51,7 +53,10 @@ function App() {
               <Route path='signin' element={<Login />} />
               <Route path='signup' element={<SignUp />} />
               <Route path='profile' element={<Person />} />
-
+              <Route path='users' element={<Users />} />
+              <Route path='new' element={<TaskForm/>} />
+              <Route path='inbox' element={<Tasks/>} />
+              <Route path='task/:id' element={<Task/>} />
             </Routes>
           </Content>
           <Footer />
