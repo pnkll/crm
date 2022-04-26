@@ -24,12 +24,13 @@ export const loginThunk = (data) => async (dispatch) => {
 export const checkAuth = () => async (dispatch) => {
     const token = localStorage.getItem('jwt')
     const response = await getAuth(token)
+    console.log(response.data)
     const info = {
         userId: response.data._id,
-        email: response.data.email,
-        firstname: response.data.firstName,
-        lastname: response.data.lastName,
-        role: response.data.roles,
+        email: response.data.local.email,
+        firstname: response.data.info.firstName,
+        lastname: response.data.info.lastName,
+        role: response.data.local.roles,
     }
     dispatch(setAuth({ auth: true, info: info }))
 }
