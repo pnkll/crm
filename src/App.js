@@ -45,7 +45,7 @@ function App() {
   return (<div>
     <BrowserRouter>
       <Layout>
-        <Sidebar />
+        {isAuth ? <Sidebar /> : <></>}
         <Layout>
           <Header />
           <Content style={{ margin: '24px 16px 0' }}>
